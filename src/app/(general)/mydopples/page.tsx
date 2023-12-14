@@ -133,7 +133,7 @@ const MyDopples = () => {
             </div>
           </>
         )}
-        {dopples.some(x => x.category === 1) && (
+        {dopples.some((x: any) => x.category === 1) && (
           <>
             <div className={cn("flex items-center justify-between")}>
               <span className={cn("text-[22px] font-bold leading-[22px]")}>
@@ -203,7 +203,7 @@ const MyDopples = () => {
             </div>
           </>
         )}
-        {dopples.some(x => x.category === 2) && (
+        {dopples.some((x: any) => x.category === 2) && (
           <>
             <div className={cn("flex items-center justify-between")}>
               <span className={cn("text-[22px] font-bold leading-[22px]")}>
