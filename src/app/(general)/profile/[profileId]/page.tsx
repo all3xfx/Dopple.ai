@@ -14,7 +14,7 @@ export default async function ProfilePage({ params }: ProfilePageProps) {
   const dopple = await request<DoppleItem>(`/dopple/id/${params.profileId}`);
   const similarItems = await request<DoppleList>("/dopple");
 
-  const items = similarItems.filter(item => item.category === dopple.category);
+  const items = similarItems.filter((item: any) => item.category === dopple.category);
 
   return (
     <div className={cn("space-y-10")}>

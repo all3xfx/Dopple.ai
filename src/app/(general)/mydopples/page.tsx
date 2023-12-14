@@ -63,7 +63,7 @@ const MyDopples = () => {
         >
           Simplify and personalize your Dopple profiles all on one page.
         </span>
-        {dopples.some(x => x.category === 0) && (
+        {dopples.some((x: any) => x.category === 0) && (
           <>
             <div className={cn("mt-[30px] flex items-center justify-between")}>
               <span className={cn("text-[22px] font-bold leading-[22px]")}>
