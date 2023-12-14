@@ -24,7 +24,7 @@ const MyDopples = () => {
 
   useMemo(async () => {
     if (isSignedIn()) {
-      const data = await request("/firebase/getDopplesDataByUser", {
+      const data: any = await request("/firebase/getDopplesDataByUser", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ user: profile.email }),
@@ -32,7 +32,7 @@ const MyDopples = () => {
 
       if (data) {
         const sortedData = data.sort(
-          (a, b) =>
+          (a: any, b: any) =>
             b.chat_history[b.chat_history.length - 1].timestamp -
             a.chat_history[a.chat_history.length - 1].timestamp,
         );
@@ -82,13 +82,14 @@ const MyDopples = () => {
               <div className={cn("pb-[30px]")}>
                 <div className={cn("mt-[15px] flex flex-wrap gap-[5px]")}>
                   {dopples
-                    .filter(x => x.category === 0)
-                    .map((x, i) => (
-                      <DoppleCard
-                        key={i}
-                        action={() => openProfile(x)}
-                        data={x}
-                      />
+                    .filter((x: any) => x.category === 0)
+                    .map((x: any, i: number) => (
+                      <div key={i}>
+                        <DoppleCard
+                          action={() => openProfile(x)}
+                          data={x}
+                        />
+                      </div>
                     ))}
                   <button
                     className={cn(
@@ -151,13 +152,14 @@ const MyDopples = () => {
               <div className={cn("pb-[30px]")}>
                 <div className={cn("mt-[15px] flex flex-wrap gap-[5px]")}>
                   {dopples
-                    .filter(x => x.category === 1)
-                    .map((x, i) => (
-                      <DoppleCard
-                        key={i}
-                        action={() => openProfile(x)}
-                        data={x}
-                      />
+                    .filter((x: any) => x.category === 1)
+                    .map((x: any, i: number) => (
+                      <div key={i}>
+                        <DoppleCard
+                          action={() => openProfile(x)}
+                          data={x}
+                        />
+                      </div>
                     ))}
                   <button
                     className={cn(
@@ -220,13 +222,14 @@ const MyDopples = () => {
               <div className={cn("pb-[30px]")}>
                 <div className={cn("mt-[15px] flex flex-wrap gap-[5px]")}>
                   {dopples
-                    .filter(x => x.category === 2)
-                    .map((x, i) => (
-                      <DoppleCard
-                        key={i}
-                        action={() => openProfile(x)}
-                        data={x}
-                      />
+                    .filter((x: any) => x.category === 2)
+                    .map((x: any, i: number) => (
+                      <div key={i}>
+                        <DoppleCard
+                          action={() => openProfile(x)}
+                          data={x}
+                        />
+                      </div>
                     ))}
                   <button
                     className={cn(
