@@ -94,7 +94,7 @@ const Account = () => {
       true,
     );
 
-    resp.then(respData => setAvatarFileUrl(respData.url));
+    resp.then((respData: any) => setAvatarFileUrl(respData.url));
   };
 
   const dropHandler = useCallback(async acceptedFiles => {
