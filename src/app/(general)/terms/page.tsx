@@ -583,7 +583,7 @@ export default function Terms() {
           benefit of all parties.
         </span>
         <span className={cn("text-[16px] font-medium")}>Severability</span>
-        <span className={cn("text-black9)}">
+        <span className={cn("text-black9")}>
           If a court or the arbitrator decides that any term or provision of
           this Arbitration Agreement (other than the subsection (b) titled
           “Prohibition of Class and Representative Actions and
