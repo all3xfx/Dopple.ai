@@ -53,7 +53,7 @@ const Account = () => {
       true,
     );
 
-    resp.then(data => {
+    resp.then((data: any) => {
       setNameExists(data.exists);
     });
   };
