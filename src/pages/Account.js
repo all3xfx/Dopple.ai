@@ -9,7 +9,8 @@ import { RefContext } from "../contexts/RefContextProvider";
 import AvatarCropModal from "../components/AvatarCropModal";
 import { useCookies } from "react-cookie";
 import axios from "../utilities/axiosConfig";
-import jwtDecode from "jwt-decode";
+import { jwtDecode } from "jwt-decode";
+
 
 const Account = () => {
     const nav = useNavigate();
@@ -308,5 +309,6 @@ const Account = () => {
         </>
     )
 }
+
 
 export default Account;
