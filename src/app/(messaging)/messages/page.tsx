@@ -62,7 +62,7 @@ const Messages = () => {
   const [searchTxt, setSearchTxt] = useState("");
   const [editing, setEditing] = useState(false);
   const [editIndex, setEditIndex] = useState(-1);
-  const [editedIndexes, setEditedIndexes] = useState([]);
+  const [editedIndexes, setEditedIndexes] = useState<number[]>([]);
   const [sending, setSending] = useState(false);
   const [loadedDopples, setLoadedDopples] = useState(false);
   const [loadedMsgs, setLoadedMsgs] = useState(false);
@@ -4938,3 +4938,4 @@ const Messages = () => {
 };
 
 export default Messages;
+
