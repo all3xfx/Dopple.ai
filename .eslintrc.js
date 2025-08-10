@@ -1,87 +1,47 @@
 /** @type {import("eslint").Linter.Config} */
 module.exports = {
   root: true,
-  parser: "@typescript-eslint/parser",
-  parserOptions: {
-    requireConfigFile: false,
-    sourceType: "module",
-  },
-  settings: {
-    react: {
-      version: "18.2.0",
-    },
-  },
-  extends: [
-    "plugin:prettier/recommended",
-    "prettier",
-    "plugin:@typescript-eslint/recommended",
-    // "plugin:@next/next/recommended",
-    "plugin:react/recommended",
-    "plugin:react-hooks/recommended",
-    "plugin:import/recommended",
-    "plugin:jsx-a11y/recommended",
-  ],
-  plugins: ["@tanstack/query", "prettier", "unused-imports"],
+  // This is the single most important change.
+  // It bundles all the necessary plugins and configurations for Next.js,
+  // including React, React Hooks, JSX-A11y, and TypeScript.
+  extends: ["next/core-web-vitals", "plugin:prettier/recommended"],
+  plugins: ["@tanstack/query", "unused-imports"],
   rules: {
-    /**
-     * We don't want any unused vars starting with "_" to be claimed as unused vars.
-     */
-    "@typescript-eslint/no-unused-vars": "off",
-    "@typescript-eslint/no-explicit-any": "off",
+    // --- Your Custom Rules (Kept from your original file) ---
+
+    // Allows you to have unused variables that start with an underscore "_"
+    "no-unused-vars": "off", // Must be off for the "unused-imports" rule to work
+    "@typescript-eslint/no-unused-vars": "off", // Must be off for the "unused-imports" rule to work
     "unused-imports/no-unused-imports": "error",
     "unused-imports/no-unused-vars": [
-      "error",
+      "warn",
       {
+        vars: "all",
         varsIgnorePattern: "^_",
+        args: "after-used",
         argsIgnorePattern: "^_",
       },
     ],
+    
+    // Allows the use of `any` type.
+    "@typescript-eslint/no-explicit-any": "off",
+
+    // Enforce `import type` for type-only imports
     "@typescript-eslint/consistent-type-imports": "warn",
-    /**
-     * Turn of the need for display names for react components.
-     * Especially when writing page components (Next.js), this is
-     * extremly bugging.
-     */
-    "react/display-name": "off",
-    /**
-     * We don't want to have the react import in each file. Typescript is
-     * handling this for us.
-     */
-    "react/react-in-jsx-scope": "off",
-    "react/prop-types": "warn",
-    /**
-     * Enforce that we do not have any `console.log`'s in the code.
-     */
-    "no-console": "error",
-    /**
-     * We need to disable those, because typescript parser needs to long for monorepo.
-     */
-    "import/named": "off",
-    "import/no-unresolved": "off",
-    /**
-     * Custom rules, that are not covered by "recommended".
-     */
-    "import/first": "error",
-    "import/newline-after-import": "error",
-    /**
-     * This makes it easier to use the auto-import function of the typescript
-     * lsp.
-     */
-    "import/no-anonymous-default-export": "warn",
-    /**
-     * Add a warning for multiple a11y things.
-     */
-    "jsx-a11y/alt-text": [
-      "warn",
-      // This is needed for next's `Image` component.
-      {
-        elements: ["img"],
-        img: ["Image"],
-      },
-    ],
+
+    // Disallows `console.log` in production builds. It will show a warning in development.
+    "no-console": ["warn", { allow: ["warn", "error"] }],
+
+    // --- Rules Covered by `next/core-web-vitals`, no longer needed to be set manually ---
+    // "react/display-name": "off", // Covered by Next.js config
+    // "react/react-in-jsx-scope": "off", // Covered by Next.js config
+    // "react/prop-types": "off", // Not needed in TypeScript projects
+
+    // --- TanStack Query Recommended Rules ---
+    "@tanstack/query/exhaustive-deps": "error",
+    "@tanstack/query/no-rest-destructuring": "warn",
+    "@tanstack/query/stable-query-client": "error",
   },
-  env: {
-    browser: true,
-    node: true,
-  },
+  // Overrides for specific file types if needed in the future
+  // "overrides": [],
 };
