@@ -39,6 +39,8 @@ import { cn } from "#/lib/cn";
 const Messages = () => {
   const isDesktop = useMediaQuery("(min-width:1024px)");
   const pathname = usePathname();
+  const [cookies] = useCookies(["userid"]);
+  
 
   const userId = useUserProfile(store => store.profile.userId);
   const profile = useUserProfile(store => store.profile);
@@ -4942,6 +4944,7 @@ const Messages = () => {
 };
 
 export default Messages;
+
 
 
 
