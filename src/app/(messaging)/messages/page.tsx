@@ -28,6 +28,8 @@ import { useDopple } from "#/state/dopples";
 import { ChatSettingsButton } from "#/components/messages/ChatSettingsButton";
 
 import { request } from "#/utilities/fetch";
+import axios from "#/utilities/axiosConfig";
+
 import { useUserSettings } from "#/state/settings";
 
 import { cn } from "#/lib/cn";
@@ -4938,4 +4940,5 @@ const Messages = () => {
 };
 
 export default Messages;
+
 
